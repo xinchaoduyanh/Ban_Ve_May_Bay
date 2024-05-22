@@ -1,0 +1,112 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["mongodb"]
+}
+
+model Airport {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  code        String
+  name        String
+  address     String
+  city        String
+  description String
+  departureRoutes FlightRoute[] @relation("DepartureToRoute")
+  arrivalRoutes   FlightRoute[] @relation("ArrivalToRoute")
+}
+
+model City {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  country String
+}
+
+model FlightRoute {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  departureAirportId String @db.ObjectId
+  arrivalAirportId   String @db.ObjectId
+  description        String
+  departureAirport   Airport @relation("DepartureToRoute", fields: [departureAirportId], references: [id])
+  arrivalAirport     Airport @relation("ArrivalToRoute", fields: [arrivalAirportId], references: [id])
+  flights            Flight[]
+}
+
+model Flight {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  routeId           String  @db.ObjectId
+  departureTime     DateTime
+  arrivalTime       DateTime
+  aircraftType      String
+  description       String
+  route             FlightRoute @relation(fields: [routeId], references: [id])
+  seats             Seat[]
+  tickets           Ticket[]
+}
+
+model TicketClass {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  seats       Seat[]
+  tickets     Ticket[]
+}
+
+model Seat {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  flightId    String  @db.ObjectId
+  classId     String  @db.ObjectId
+  isAvailable Boolean @default(true)
+  flight      Flight  @relation(fields: [flightId], references: [id])
+  class       TicketClass @relation(fields: [classId], references: [id])
+}
+
+model Ticket {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  flightId    String  @db.ObjectId
+  classId     String  @db.ObjectId
+  customerId  String  @db.ObjectId
+  purchaseDate DateTime
+  price       Float
+  flight      Flight  @relation(fields: [flightId], references: [id])
+  class       TicketClass @relation(fields: [classId], references: [id])
+  customer    Customer @relation(fields: [customerId], references: [id])
+}
+
+model Customer {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  dateOfBirth DateTime
+  gender      String
+  idNumber    String
+  idType      String
+  nationality String
+  tickets     Ticket[]
+}
+//-------------------------------------------------------- Giai Thich CSDL--------------------------------------------------------
+// Airport:
+// Một sân bay có thể là điểm xuất phát (departureRoutes) hoặc điểm đến (arrivalRoutes) của nhiều chặng bay (FlightRoute).
+
+// FlightRoute:
+// Mỗi chặng bay có một sân bay xuất phát (departureAirport) và một sân bay đến (arrivalAirport).
+// Một chặng bay có thể có nhiều chuyến bay (flights).
+
+// Flight:
+// Mỗi chuyến bay thuộc một chặng bay (route).
+// Mỗi chuyến bay có nhiều ghế (seats) và nhiều vé (tickets).
+
+// TicketClass:
+// Mỗi hạng vé có nhiều ghế (seats) và nhiều vé (tickets).
+
+// Seat:
+// Mỗi ghế thuộc một chuyến bay (flight) và một hạng vé (class).
+
+// Ticket:
+// Mỗi vé thuộc về một chuyến bay (flight), một hạng vé (class), và một khách hàng (customer).
+
+// Customer:
+// Mỗi khách hàng có nhiều vé (tickets).
+// */
