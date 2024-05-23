@@ -7,6 +7,9 @@ import airportRoutes from './routes/airport.routes'
 import cityRoutes from './routes/city.routes'
 import { flightRouteRoutes } from './routes/flightRoute.routes'
 import flightRoutes from './routes/flight.routes'
+import { ticketClassRoutes } from './routes/ticketClass.routes'
+import { ticketRoutes } from './routes/ticket.routes'
+import { seatRoutes } from './routes/seat.routes'
 
 const app: FastifyInstance = fastify()
 
@@ -18,6 +21,9 @@ app.register(airportRoutes, { prefix: '/airport', prisma })
 app.register(cityRoutes, { prefix: '/city', prisma })
 app.register(flightRouteRoutes, { prefix: '/flightRoute', prisma })
 app.register(flightRoutes, { prefix: '/flight', prisma })
+app.register(ticketClassRoutes, { prefix: '/ticketClass', prisma })
+app.register(ticketRoutes, { prefix: '/ticket', prisma })
+app.register(seatRoutes, { prefix: '/seat', prisma })
 // Start server
 const start = async () => {
   try {

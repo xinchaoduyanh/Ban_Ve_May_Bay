@@ -9,11 +9,11 @@ import {
 import {
   DeleteOrGetyByIdFlightRouteRequest,
   UpdateFlightRouteRequest,
-  createFlightRouteRequest
+  CreateFlightRouteRequest
 } from '~/models/request/flightRouteRequest'
 
 export const createFlightRouteController = async (
-  request: FastifyRequest<createFlightRouteRequest>,
+  request: FastifyRequest<CreateFlightRouteRequest>,
   reply: FastifyReply
 ) => {
   const validationResult = await createFlightRouteValidator(request, reply)

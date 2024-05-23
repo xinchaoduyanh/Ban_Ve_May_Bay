@@ -1,7 +1,7 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
 import { FLIGHT_ROUTE_MESSAGES } from '../constants/messages'
-import { createFlightRouteRequest } from '~/models/request/flightRouteRequest'
+import { CreateFlightRouteRequest } from '~/models/request/flightRouteRequest'
 
 const flightRouteSchema = z.object({
   departureAirportId: z.string().min(1, { message: FLIGHT_ROUTE_MESSAGES.FLIGHT_ROUTE_NOT_FOUND }),
@@ -10,7 +10,7 @@ const flightRouteSchema = z.object({
 })
 
 export const createFlightRouteValidator = async (
-  request: FastifyRequest<createFlightRouteRequest>,
+  request: FastifyRequest<CreateFlightRouteRequest>,
   reply: FastifyReply
 ) => {
   const validationResult = flightRouteSchema.safeParse(request.body)

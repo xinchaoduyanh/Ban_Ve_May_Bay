@@ -7,7 +7,7 @@ export type UpdateFlightRouteRequest = {
   }
 }
 
-export type createFlightRouteRequest = {
+export type CreateFlightRouteRequest = {
   Body: FlightRoute
 }
 export type DeleteOrGetyByIdFlightRouteRequest = {

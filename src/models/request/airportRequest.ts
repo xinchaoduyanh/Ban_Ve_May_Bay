@@ -7,6 +7,6 @@ export type UpdateAirportRequest = {
   }
 }
 
-export type createAirportRequest = {
+export type CreateAirportRequest = {
   Body: Airport
 }

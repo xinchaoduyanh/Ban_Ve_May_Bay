@@ -46,3 +46,48 @@ export const FLIGHT_MESSAGES = {
   ARRIVAL_TIME_REQUIRED: 'Thời gian đến là bắt buộc',
   AIRCRAFT_TYPE_MIN_LENGTH: 'Loại máy bay phải có ít nhất 3 ký tự'
 }
+// constants/messages.ts
+export const TICKET_CLASS_MESSAGES = {
+  TICKET_CLASS_CREATED_SUCCESSFULLY: 'Tạo lớp vé thành công',
+  TICKET_CLASS_UPDATED_SUCCESSFULLY: 'Cập nhật lớp vé thành công',
+  TICKET_CLASS_DELETED_SUCCESSFULLY: 'Xóa lớp vé thành công',
+  TICKET_CLASS_FETCHED_SUCCESSFULLY: 'Lấy thông tin lớp vé thành công',
+  NAME_MIN_LENGTH: 'Tên phải có ít nhất 3 ký tự',
+  NAME_MAX_LENGTH: 'Tên không được vượt quá 50 ký tự'
+}
+// constants/messages.ts
+export const TICKET_MESSAGES = {
+  TICKET_CREATED_SUCCESSFULLY: 'Tạo vé thành công',
+  TICKET_UPDATED_SUCCESSFULLY: 'Cập nhật vé thành công',
+  TICKET_DELETED_SUCCESSFULLY: 'Xóa vé thành công',
+  TICKET_FETCHED_SUCCESSFULLY: 'Lấy thông tin vé thành công',
+  FLIGHT_ID_REQUIRED: 'Mã chuyến bay là bắt buộc',
+  CLASS_ID_REQUIRED: 'Mã hạng vé là bắt buộc',
+  CUSTOMER_ID_REQUIRED: 'Mã khách hàng là bắt buộc',
+  PURCHASE_DATE_REQUIRED: 'Ngày mua vé là bắt buộc',
+  PRICE_MIN_VALUE: 'Giá vé phải lớn hơn hoặc bằng 0'
+}
+// constants/messages.ts
+export const SEAT_MESSAGES = {
+  SEAT_CREATED_SUCCESSFULLY: 'Tạo ghế thành công',
+  SEAT_UPDATED_SUCCESSFULLY: 'Cập nhật ghế thành công',
+  SEAT_DELETED_SUCCESSFULLY: 'Xóa ghế thành công',
+  SEAT_FETCHED_SUCCESSFULLY: 'Lấy thông tin ghế thành công',
+  FLIGHT_ID_REQUIRED: 'Mã chuyến bay là bắt buộc',
+  CLASS_ID_REQUIRED: 'Mã hạng vé là bắt buộc'
+}
+export const CUSTOMER_MESSAGES = {
+  CUSTOMER_CREATED_SUCCESSFULLY: 'Khách hàng được tạo thành công',
+  CUSTOMER_UPDATED_SUCCESSFULLY: 'Khách hàng được cập nhật thành công',
+  CUSTOMER_DELETED_SUCCESSFULLY: 'Khách hàng được xóa thành công',
+  CUSTOMER_FETCHED_SUCCESSFULLY: 'Khách hàng được truy xuất thành công',
+  CUSTOMER_NOT_FOUND: 'Không tìm thấy khách hàng',
+  NAME_MIN_LENGTH: 'Tên khách hàng phải có ít nhất 3 ký tự',
+  NAME_MAX_LENGTH: 'Tên khách hàng không được vượt quá 50 ký tự',
+  DATE_OF_BIRTH_REQUIRED: 'Ngày sinh là bắt buộc',
+  ID_NUMBER_MIN_LENGTH: 'Số CMND phải có ít nhất 6 ký tự',
+  ID_NUMBER_MAX_LENGTH: 'Số CMND không được vượt quá 20 ký tự',
+  ID_TYPE_REQUIRED: 'Loại CMND là bắt buộc',
+  GENDER_REQUIRED: 'Giới tính là bắt buộc',
+  NATIONALITY_REQUIRED: 'Quốc tịch là bắt buộc'
+}

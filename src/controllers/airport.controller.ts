@@ -1,9 +1,9 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { createAirport, getAirport, updateAirport, deleteAirport } from '../services/airport.service'
 import { Airport } from '../models/airport.model'
-import { UpdateAirportRequest, createAirportRequest } from '~/models/request/airportRequest'
+import { UpdateAirportRequest, CreateAirportRequest } from '~/models/request/airportRequest'
 
-export const createAirportController = async (request: FastifyRequest<createAirportRequest>, reply: FastifyReply) => {
+export const createAirportController = async (request: FastifyRequest<CreateAirportRequest>, reply: FastifyReply) => {
   const airport = await createAirport(request.body)
   reply.send(airport)
 }
